@@ -1,0 +1,13 @@
+#lang racket
+
+;Problem 1
+(define list-ref
+  (lambda (ls n)
+    (letrec
+      ((nth-cdr
+         (lambda (n)
+           (cond
+             [(eqv? 0 n) ls]
+             [else (cdr (nth-cdr (sub1 n)))]))))
+      (car (nth-cdr n)))))
+
